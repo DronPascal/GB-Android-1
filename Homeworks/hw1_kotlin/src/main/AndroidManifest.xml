@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pascal.homeworks">
+    package="com.pascal.hw1_kotlin">
 
     <application
         android:allowBackup="true"
