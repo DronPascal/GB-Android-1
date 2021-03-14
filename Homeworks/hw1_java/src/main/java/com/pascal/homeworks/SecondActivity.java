@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
+public class SecondActivity extends AppCompatActivity {
     private Button btnToFirstAct;
 
     @Override
@@ -16,17 +16,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_second);
 
         btnToFirstAct = findViewById(R.id.back_btn);
-        btnToFirstAct.setOnClickListener(this);
+        btnToFirstAct.setOnClickListener((View v) -> {
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+        });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.back_btn:
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                finish();
-                break;
-        }
-    }
 }

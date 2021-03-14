@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="text" />
+            android:text="text"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
@@ -26,7 +27,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="textPersonName" />
+            android:text="textPersonName"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
@@ -34,7 +36,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone"
-            android:text="phone" />
+            android:text="phone"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName5"
@@ -42,7 +45,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:text="number" />
+            android:text="number"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName7"
@@ -50,7 +54,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="textEmailAddress" />
+            android:text="textEmailAddress"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName6"
@@ -58,7 +63,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="textPassword" />
+            android:text="textPassword"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName9"
@@ -66,7 +72,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textAutoComplete"
-            android:text="textAutoComplete" />
+            android:text="textAutoComplete"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName12"
@@ -74,7 +81,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textAutoCorrect"
-            android:text="textAutoCorrect" />
+            android:text="textAutoCorrect"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName10"
@@ -82,7 +90,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="none"
-            android:text="none" />
+            android:text="none"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName11"
@@ -90,7 +99,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:text="textMultiLine" />
+            android:text="textMultiLine"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName14"
@@ -98,7 +108,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="time"
-            android:text="time" />
+            android:text="time"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName8"
@@ -106,7 +117,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="date"
-            android:text="date" />
+            android:text="date"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName13"
@@ -114,7 +126,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="datetime"
-            android:text="datetime" />
+            android:text="datetime"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/back_btn"

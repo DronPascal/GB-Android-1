@@ -12,10 +12,9 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         btnToSecAct = findViewById(R.id.back_btn)
-        btnToSecAct.setOnClickListener { view: View ->
+        btnToSecAct.setOnClickListener { _: View ->
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

@@ -14,10 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnToSecAct = findViewById(R.id.fvd_btn)
-        btnToSecAct.setOnClickListener { view: View ->
+        btnToSecAct.setOnClickListener { _: View ->
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }
