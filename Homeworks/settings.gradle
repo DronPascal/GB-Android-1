@@ -1,2 +1,3 @@
-include ':app'
+include ':hw1_kotlin'
+include ':hw1_java'
 rootProject.name = "Homeworks"
