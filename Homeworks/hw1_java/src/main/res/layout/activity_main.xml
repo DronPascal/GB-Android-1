@@ -1,80 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="188dp">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#FFEB3B"
-            android:gravity="center"
-            android:text="Этот"
-            android:textSize="36sp" />
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="338dp">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextTextPersonName2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#3F51B5"
             android:ems="10"
-            android:gravity="center"
-            android:hapticFeedbackEnabled="false"
+            android:inputType="text"
+            android:text="text" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
             android:inputType="textPersonName"
-            android:rotationX="21"
-            android:rotationY="6"
-            android:text="Макет"
-            android:textSize="36sp" />
+            android:text="textPersonName" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="просто"
-            android:textSize="36sp" />
+            android:ems="10"
+            android:inputType="phone"
+            android:text="phone" />
 
-        <Switch
-            android:id="@+id/switch1"
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|right"
-            android:hapticFeedbackEnabled="false"
-            android:text="ОГОНЬ"
-            android:textColor="#FA2111"
-            android:textSize="36sp" />
+            android:ems="10"
+            android:inputType="number"
+            android:text="number" />
 
-        <ToggleButton
-            android:id="@+id/toggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="#8BC34A"
-            android:buttonTint="#CF2828"
-            android:gravity="center"
-            android:textOff="да!"
-            android:textOn="да!" />
-
-        <CalendarView
-            android:id="@+id/calendarView"
+        <EditText
+            android:id="@+id/editTextTextPersonName7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="textPassword" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textAutoComplete"
+            android:text="textAutoComplete" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textAutoCorrect"
+            android:text="textAutoCorrect" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none"
+            android:text="none" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:text="textMultiLine" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            android:text="time" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:text="date" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="datetime"
+            android:text="datetime" />
 
         <Button
-            android:id="@+id/fvd_btn"
+            android:id="@+id/back_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ещё" />
+            android:text="назад" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
