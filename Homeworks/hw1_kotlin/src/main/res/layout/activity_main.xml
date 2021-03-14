@@ -75,6 +75,9 @@
             android:id="@+id/fvd_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#009688"
+            android:checkable="false"
+            android:clickable="false"
             android:text="ещё" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
