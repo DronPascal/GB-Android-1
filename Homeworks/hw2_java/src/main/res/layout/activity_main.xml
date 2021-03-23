@@ -14,7 +14,7 @@
         app:srcCompat="@drawable/background_image" />
 
     <TextView
-        android:id="@+id/numArea"
+        android:id="@+id/resultNumArea"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="viewEnd"
@@ -113,7 +113,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/btnPi"
+                android:id="@+id/btn1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -386,9 +386,5 @@
                 app:iconPadding="0dp"
                 app:iconTint="@color/operations_color" />
         </TableRow>
-
     </TableLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </FrameLayout>
