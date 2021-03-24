@@ -1,7 +1,6 @@
 package com.pascal.hw2_java;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,9 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v instanceof Button) {
             Button btn = (Button) v;
-            if (Double.isNaN
-                    (Double.parseDouble(
-                            ((String) txtResult.getText())))) {
+            Double curNum = (Double.parseDouble(((String) txtResult.getText())));
+            if (Double.isNaN(curNum) || curNum.isInfinite(curNum)) {
                 setCurrentNumber(calculator.clearAll());
                 Toast.makeText(this, "Calculator cleared", Toast.LENGTH_SHORT).show();
             }

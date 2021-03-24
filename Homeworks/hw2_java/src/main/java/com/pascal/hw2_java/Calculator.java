@@ -1,8 +1,5 @@
 package com.pascal.hw2_java;
 
-import android.util.Log;
-import android.widget.Toast;
-
 public class Calculator {
     private double result = 0;
     private String currentNum = "0";
@@ -63,10 +60,7 @@ public class Calculator {
         } catch (ArithmeticException e) {
             e.printStackTrace();
             calculusResult = Double.NaN;
-        } finally {
-            Log.d("debug", "calculation finished");
         }
-        Log.d("debug", "calculation is " + calculusResult);
         operation = "none";
         result = calculusResult;
         currentNum = calculusResult+"";
