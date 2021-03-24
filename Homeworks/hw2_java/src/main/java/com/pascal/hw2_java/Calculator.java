@@ -94,9 +94,6 @@ public class Calculator {
         if ("none".equals(operation)) {
             result = Double.parseDouble(currentNum);
             currentNum = "0";
-            //        } else if (oper == "-") {
-//            if (currentNum == "0")
-//                currentNum = "-";
         }
         operation = oper;
     }
