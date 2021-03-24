@@ -13,7 +13,7 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/img_background" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/resultNumArea"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
