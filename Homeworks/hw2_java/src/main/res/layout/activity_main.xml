@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/img_background" />
+        app:srcCompat="@drawable/img_background"
+        android:contentDescription="@string/back_img_description" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/resultNumArea"
@@ -87,7 +88,7 @@
                 android:id="@+id/btnMult"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_mult" />
+                android:text="@string/_multiply" />
         </TableRow>
 
         <TableRow

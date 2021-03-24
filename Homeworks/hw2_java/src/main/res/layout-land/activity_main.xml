@@ -91,7 +91,7 @@
                 android:id="@+id/btnMult"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_mult" />
+                android:text="@string/_multiply" />
         </TableRow>
 
         <TableRow

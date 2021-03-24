@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Double curNum = (Double.parseDouble(((String) txtResult.getText())));
             if (Double.isNaN(curNum) || curNum.isInfinite(curNum)) {
                 setCurrentNumber(calculator.clearAll());
-                Toast.makeText(this, "Calculator cleared", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, this.getString(R.string.calc_cleared), Toast.LENGTH_SHORT).show();
             }
             switch (btn.getId()) {
                 case R.id.btnEquals:
