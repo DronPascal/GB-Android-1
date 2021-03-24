@@ -1,34 +1,41 @@
 package com.pascal.hw2_java;
 
 import android.util.Log;
+import android.widget.Toast;
 
 public class Calculator {
     private double result = 0;
     private String currentNum = "0";
-    private String operation = "+";
+    private String operation = "none";
 
     public String clearAll() {
         result = 0;
         currentNum = "0";
-        operation = "+";
+        operation = "none";
         return "0";
     }
 
     public String removeDigit() {
-        currentNum = currentNum.substring(0, currentNum.length() - 1);
+        if (currentNum.length() == 1)
+            currentNum = "0";
+        else
+            currentNum = currentNum.substring(0, currentNum.length() - 1);
+
         return currentNum;
     }
 
     public String addDotSymbol() {
-        if (!currentNum.contains(",") && currentNum.length()!=0) {
-            currentNum+=",";
+        if (!currentNum.contains(".") && currentNum.length() != 0) {
+            currentNum += ".";
         }
         return currentNum;
     }
 
     public String calcResult() {
+        if (!isParseble(currentNum)) return currentNum;
+        if ("none".equals(operation)) return currentNum;
         double firstOperand = result;
-        double secondOperand = Double.parseDouble(currentNum.replace(",", "."));
+        double secondOperand = Double.parseDouble(currentNum);
         double calculusResult = 0;
         try {
             switch (operation) {
@@ -59,8 +66,11 @@ public class Calculator {
         } finally {
             Log.d("debug", "calculation finished");
         }
-        Log.d("debug", "calculation is "+ calculusResult);
-        return ""+calculusResult;
+        Log.d("debug", "calculation is " + calculusResult);
+        operation = "none";
+        result = calculusResult;
+        currentNum = calculusResult+"";
+        return currentNum;
     }
 
 
@@ -84,7 +94,33 @@ public class Calculator {
         return operation;
     }
 
-    public void setOperation(String operation) {
-        this.operation = operation;
+    public void setOperation(String oper) {
+        if (!isParseble(currentNum)) return;
+
+        if ("none".equals(operation)) {
+            result = Double.parseDouble(currentNum);
+            currentNum = "0";
+            //        } else if (oper == "-") {
+//            if (currentNum == "0")
+//                currentNum = "-";
+        }
+        operation = oper;
+    }
+
+    public String addDigit(String digit) {
+        if ("0".equals(currentNum))
+            currentNum = "";
+        currentNum += digit;
+        return currentNum;
+    }
+
+    public boolean isParseble(String string) {
+        if ("NaN".equals(currentNum)) return false;
+        try {
+            double num = Double.parseDouble(string);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 }

@@ -2,10 +2,12 @@ package com.pascal.hw2_java;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txtResult;
     private Calculator calculator;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         calculator = new Calculator();
         txtResult = findViewById(R.id.resultNumArea);
-        txtResult.setText(calculator.getCurrentNum());
+        setCurrentNumber(calculator.getCurrentNum());
 
         for (View v : getAllChildren(findViewById(R.id.buttonsLayout))) {
             if (v instanceof Button) {
-                Log.d("d", "set listener to " + v.getId());
                 v.setOnClickListener(this);
             }
         }
@@ -39,27 +39,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v instanceof Button) {
-            Log.d("d", "btn clicked");
             Button btn = (Button) v;
             if (Double.isNaN
                     (Double.parseDouble(
-                            (String) txtResult.getText()))) {
-                calculator.clearAll();
+                            ((String) txtResult.getText())))) {
+                setCurrentNumber(calculator.clearAll());
+                Toast.makeText(this, "Calculator cleared", Toast.LENGTH_SHORT).show();
             }
-            Log.d("d", btn.getId()+"");
-
             switch (btn.getId()) {
                 case R.id.btnEquals:
-                    txtResult.setText(calculator.calcResult());
+                    setCurrentNumber(calculator.calcResult());
                     break;
                 case R.id.btnClear:
-                    txtResult.setText(calculator.clearAll());
+                    setCurrentNumber(calculator.clearAll());
                     break;
                 case R.id.btnDelete:
-                    txtResult.setText(calculator.removeDigit());
+                    setCurrentNumber(calculator.removeDigit());
                     break;
                 case R.id.btnDot:
-                    txtResult.setText(calculator.addDotSymbol());
+                    setCurrentNumber(calculator.addDotSymbol());
                     break;
                 case R.id.dtnPow:
                 case R.id.btnMult:
@@ -69,11 +67,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     calculator.setOperation((String) btn.getText());
                     break;
                 default:
-                    Log.d("d", "btn clicked"+btn.getText());
-                    calculator.setOperation((String) btn.getText());
-
+                    setCurrentNumber(calculator.addDigit((String) btn.getText()));
             }
         }
+    }
+
+    private void setCurrentNumber(String curNum) {
+        float size = getResources().getDimension(R.dimen.calc_text_size);
+        if (curNum.length() > 7) {
+            size /= (float) curNum.length() / 7;
+        }
+        txtResult.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
+        txtResult.setText(curNum);
     }
 
     private List<View> getAllChildren(View v) {

@@ -362,7 +362,7 @@
                 android:maxWidth="@dimen/btn_max_size"
                 android:maxHeight="@dimen/btn_max_size"
                 android:minHeight="@dimen/btn_min_size"
-                android:text=","
+                android:text="."
                 android:textColor="@color/num_color"
                 android:textSize="@dimen/btn_text_size"
                 app:cornerRadius="0dp"
