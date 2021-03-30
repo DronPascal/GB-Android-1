@@ -1,5 +1,7 @@
 package com.pascal.hw2_java;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -7,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +23,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String APP_PREF = "APP_SETTINGS";
+    private static final String APP_THEME = "APP_THEME";
+    private static final int AppLightTheme = 0;
+    private static final int AppDarkTheme = 1;
+    private int currentThemeCode;
+
     private TextView txtResult;
     private Calculator calculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(R.style.MyAppTheme));
         setContentView(R.layout.activity_main);
 
         calculator = new Calculator();
@@ -37,52 +49,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    // создание меню
+    private int getAppTheme(int codeStyle) {
+        return codeStyleToStyleId(getCodeStyle(codeStyle));
+    }
+
+    private int getCodeStyle(int codeStyle) {
+        SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, MODE_PRIVATE);
+        currentThemeCode = sharedPreferences.getInt(APP_THEME, codeStyle);
+        return currentThemeCode;
+    }
+
+    private int codeStyleToStyleId(int codeStyle) {
+        if (codeStyle == AppDarkTheme) {
+            return R.style.MyAppThemeDark;
+        }
+        return R.style.MyAppTheme;
+    }
+
+    private void setAppTheme(int codeStyle) {
+        SharedPreferences sharedPreferences = getSharedPreferences(APP_PREF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(APP_THEME, codeStyle);
+        editor.apply();
+    }
+
+    // Cоздание меню
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // TODO Auto-generated method stub
-        // добавляем пункты меню
-        menu.add(0, 1, 0, "add");
-        menu.add(0, 2, 0, "edit");
-        menu.add(0, 3, 3, "delete");
-        menu.add(1, 4, 1, "copy");
-        menu.add(1, 5, 2, "paste");
-        menu.add(1, 6, 4, "exit");
-
+        menu.add(0, 0, 0, this.getString(R.string.datk_theme_title));
         return super.onCreateOptionsMenu(menu);
     }
 
-    // обновление меню
+    // Обновление меню
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // TODO Auto-generated method stub
-        // пункты меню с ID группы = 1 видны, если в CheckBox стоит галка
-        menu.setGroupVisible(1, true);
+        menu.getItem(0).setCheckable(true);
+        if (currentThemeCode == AppDarkTheme) {
+            menu.getItem(0).setChecked(true);
+        } else {
+            menu.getItem(0).setChecked(false);
+        }
         return super.onPrepareOptionsMenu(menu);
     }
 
-    // обработка нажатий
+    // Обработка нажатий
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO Auto-generated method stub
-        StringBuilder sb = new StringBuilder();
-
-        // Выведем в TextView информацию о нажатом пункте меню
-        sb.append("Item Menu");
-        sb.append("\r\n groupId: " + String.valueOf(item.getGroupId()));
-        sb.append("\r\n itemId: " + String.valueOf(item.getItemId()));
-        sb.append("\r\n order: " + String.valueOf(item.getOrder()));
-        sb.append("\r\n title: " + item.getTitle());
-        Toast.makeText(this,sb, Toast.LENGTH_SHORT).show();
+        if (item.getItemId() == 0) {
+            if (item.isChecked())
+                setAppTheme(AppLightTheme);
+            else
+                setAppTheme(AppDarkTheme);
+            recreate();
+        }
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         if (v instanceof Button) {
             Button btn = (Button) v;
             Double curNum = (Double.parseDouble(((String) txtResult.getText())));
-            if (Double.isNaN(curNum) || curNum.isInfinite(curNum)) {
+            if (Double.isNaN(curNum) || Double.isInfinite(curNum)) {
                 setCurrentNumber(calculator.clearAll());
                 Toast.makeText(this, this.getString(R.string.calc_cleared), Toast.LENGTH_SHORT).show();
             }

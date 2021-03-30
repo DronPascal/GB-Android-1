@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- My buttons colors-->
-    <color name="btn_color">#BF101010</color>
-    <color name="operations_color">#FFA22F</color>
-    <color name="num_color">#C5802B</color>
-</resources>
