@@ -11,33 +11,38 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_background" />
 
     <TextView
         android:id="@+id/resultNumArea"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="viewEnd"
+        android:width="300dp"
         android:textColor="@color/operations_color"
         android:textSize="@dimen/calc_text_size"
-        app:layout_constraintBottom_toTopOf="@+id/buttonsLayout"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/buttonsLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/buttonsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="@+id/imgBackground">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resultNumArea"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/btnClear"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -54,7 +59,7 @@
 
             <Button
                 android:id="@+id/btnDelete"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -74,7 +79,7 @@
 
             <Button
                 android:id="@+id/dtnPow"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -91,7 +96,7 @@
 
             <Button
                 android:id="@+id/btnDiv"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -108,13 +113,13 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/btn1"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -131,7 +136,7 @@
 
             <Button
                 android:id="@+id/btn2"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -148,7 +153,7 @@
 
             <Button
                 android:id="@+id/btn3"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -165,7 +170,7 @@
 
             <Button
                 android:id="@+id/btnMult"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -182,13 +187,13 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/btn4"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -205,7 +210,7 @@
 
             <Button
                 android:id="@+id/btn5"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -222,7 +227,7 @@
 
             <Button
                 android:id="@+id/btn6"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -239,7 +244,7 @@
 
             <Button
                 android:id="@+id/btnMinus"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -256,13 +261,13 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/btn7"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -279,7 +284,7 @@
 
             <Button
                 android:id="@+id/btn8"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -296,7 +301,7 @@
 
             <Button
                 android:id="@+id/btn9"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -313,7 +318,7 @@
 
             <Button
                 android:id="@+id/btnPlus"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/btn_color"
@@ -330,7 +335,7 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
@@ -387,4 +392,5 @@
                 app:iconTint="@color/operations_color" />
         </TableRow>
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
