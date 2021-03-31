@@ -11,6 +11,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/notes_java" />
+            <option value="$PROJECT_DIR$/notes_kotlin" />
             <option value="$PROJECT_DIR$/hw1_java" />
             <option value="$PROJECT_DIR$/hw1_kotlin" />
             <option value="$PROJECT_DIR$/hw2_java" />
