@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final int MAX_NUMBER_LENGTH = 7;
     private static final String APP_PREF = "APP_SETTINGS";
     private static final String APP_THEME = "APP_THEME";
     private static final int AppLightTheme = 0;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView txtResult;
     private Calculator calculator;
+    private List<View> tableViewsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtResult = findViewById(R.id.resultNumArea);
         setCurrentNumber(calculator.getCurrentNum());
 
-        for (View v : getAllChildren(findViewById(R.id.buttonsLayout))) {
+        tableViewsList = getAllChildren(findViewById(R.id.buttonsLayout));
+        for (View v : tableViewsList) {
             if (v instanceof Button) {
                 v.setOnClickListener(this);
             }
@@ -143,16 +146,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setCurrentNumber(String curNum) {
         float size = getResources().getDimension(R.dimen.calc_text_size);
-        if (curNum.length() > 7) {
-            size /= (float) curNum.length() / 7;
+        if (curNum.length() > MAX_NUMBER_LENGTH) {
+            size /= (float) curNum.length() / MAX_NUMBER_LENGTH;
         }
         txtResult.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
         txtResult.setText(curNum);
     }
 
     private List<View> getAllChildren(View v) {
-        List<View> visited = new ArrayList<View>();
-        List<View> unvisited = new ArrayList<View>();
+        List<View> visited = new ArrayList<>();
+        List<View> unvisited = new ArrayList<>();
         unvisited.add(v);
 
         while (!unvisited.isEmpty()) {
@@ -161,7 +164,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!(child instanceof ViewGroup)) continue;
             ViewGroup group = (ViewGroup) child;
             final int childCount = group.getChildCount();
-            for (int i = 0; i < childCount; i++) unvisited.add(group.getChildAt(i));
+            for (int i = 0; i < childCount; i++) {
+                unvisited.add(group.getChildAt(i));
+            }
         }
         return visited;
     }
