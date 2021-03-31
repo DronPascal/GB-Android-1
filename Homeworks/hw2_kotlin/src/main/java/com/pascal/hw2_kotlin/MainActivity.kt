@@ -13,6 +13,7 @@ import java.util.*
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var txtResult: TextView
     private lateinit var calculator: Calculator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

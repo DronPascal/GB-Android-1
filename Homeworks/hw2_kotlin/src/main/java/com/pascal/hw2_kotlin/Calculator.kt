@@ -46,7 +46,7 @@ class Calculator {
         }
         operation = "none"
         result = calculusResult
-        currentNum = calculusResult.toString() + ""
+        currentNum = calculusResult.toString()
         return currentNum
     }
 

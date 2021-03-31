@@ -1,23 +1,25 @@
 package com.pascal.hw2_java;
 
 public class Calculator {
+    public final static String NONE = "none";
+
     private double result = 0;
     private String currentNum = "0";
-    private String operation = "none";
+    private String operation = NONE;
 
     public String clearAll() {
         result = 0;
         currentNum = "0";
-        operation = "none";
+        operation = NONE;
         return "0";
     }
 
     public String removeDigit() {
-        if (currentNum.length() == 1)
+        if (currentNum.length() == 1) {
             currentNum = "0";
-        else
+        } else {
             currentNum = currentNum.substring(0, currentNum.length() - 1);
-
+        }
         return currentNum;
     }
 
@@ -29,8 +31,8 @@ public class Calculator {
     }
 
     public String calcResult() {
-        if (!isParseble(currentNum)) return currentNum;
-        if ("none".equals(operation)) return currentNum;
+        if (!isDouble(currentNum)) return currentNum;
+        if (NONE.equals(operation)) return currentNum;
         double firstOperand = result;
         double secondOperand = Double.parseDouble(currentNum);
         double calculusResult = 0;
@@ -61,37 +63,20 @@ public class Calculator {
             e.printStackTrace();
             calculusResult = Double.NaN;
         }
-        operation = "none";
+        operation = NONE;
         result = calculusResult;
-        currentNum = calculusResult+"";
+        currentNum = calculusResult + "";
         return currentNum;
-    }
-
-
-    public double getResult() {
-        return result;
-    }
-
-    public void setResult(double result) {
-        this.result = result;
     }
 
     public String getCurrentNum() {
         return currentNum;
     }
 
-    public void setCurrentNum(String currentNum) {
-        this.currentNum = currentNum;
-    }
-
-    public String getOperation() {
-        return operation;
-    }
-
     public void setOperation(String oper) {
-        if (!isParseble(currentNum)) return;
+        if (!isDouble(currentNum)) return;
 
-        if ("none".equals(operation)) {
+        if (NONE.equals(operation)) {
             result = Double.parseDouble(currentNum);
             currentNum = "0";
         }
@@ -105,7 +90,7 @@ public class Calculator {
         return currentNum;
     }
 
-    public boolean isParseble(String string) {
+    public boolean isDouble(String string) {
         if ("NaN".equals(currentNum)) return false;
         try {
             double num = Double.parseDouble(string);
