@@ -1,2 +1,4 @@
+include ':notes_kotlin'
+include ':notes_java'
 include ':app'
 rootProject.name = "Homeworks"
