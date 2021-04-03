@@ -1,24 +1,24 @@
 <resources>
     <string name="app_name">Calculator</string>
 
-    <string name="_c" translatable="false">C</string>
-    <string name="_pow" translatable="false">^</string>
-    <string name="_div" translatable="false">/</string>
-    <string name="_1" translatable="false">1</string>
-    <string name="_2" translatable="false">2</string>
-    <string name="_3" translatable="false">3</string>
-    <string name="_multiply" translatable="false">*</string>
-    <string name="_4" translatable="false">4</string>
-    <string name="_5" translatable="false">5</string>
-    <string name="_6" translatable="false">6</string>
-    <string name="_minus" translatable="false">-</string>
-    <string name="_7" translatable="false">7</string>
-    <string name="_8" translatable="false">8</string>
-    <string name="_9" translatable="false">9</string>
-    <string name="_plus" translatable="false">+</string>
-    <string name="_0" translatable="false">0</string>
-    <string name="_dot" translatable="false">.</string>
-    <string name="_equal" translatable="false">=</string>
+    <string name="text_btn_c" translatable="false">C</string>
+    <string name="text_btn_pow" translatable="false">^</string>
+    <string name="text_btn_div" translatable="false">/</string>
+    <string name="text_btn_1" translatable="false">1</string>
+    <string name="text_btn_2" translatable="false">2</string>
+    <string name="text_btn_3" translatable="false">3</string>
+    <string name="text_btn_multiply" translatable="false">*</string>
+    <string name="text_btn_4" translatable="false">4</string>
+    <string name="text_btn_5" translatable="false">5</string>
+    <string name="text_btn_6" translatable="false">6</string>
+    <string name="text_btn_minus" translatable="false">-</string>
+    <string name="text_btn_7" translatable="false">7</string>
+    <string name="text_btn_8" translatable="false">8</string>
+    <string name="text_btn_9" translatable="false">9</string>
+    <string name="text_btn_plus" translatable="false">+</string>
+    <string name="text_btn_0" translatable="false">0</string>
+    <string name="text_btn_dot" translatable="false">.</string>
+    <string name="text_btn_equal" translatable="false">=</string>
     <string name="back_img_description" translatable="false">background</string>
     <string name="calc_cleared">Calculator cleared</string>
 </resources>

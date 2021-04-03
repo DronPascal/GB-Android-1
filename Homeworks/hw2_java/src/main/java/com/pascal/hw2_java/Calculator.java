@@ -65,7 +65,7 @@ public class Calculator {
         }
         operation = NONE;
         result = calculusResult;
-        currentNum = calculusResult + "";
+        currentNum = String.valueOf(calculusResult);
         return currentNum;
     }
 
