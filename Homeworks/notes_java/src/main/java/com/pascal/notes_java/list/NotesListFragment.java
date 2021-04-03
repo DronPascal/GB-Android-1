@@ -3,23 +3,24 @@ package com.pascal.notes_java.list;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.pascal.notes_java.R;
 import com.pascal.notes_java.model.DataSource;
 import com.pascal.notes_java.note.NoteFragment;
 
+import java.util.Objects;
 
-public class NotesListFragment extends Fragment implements AdapterCallback{
+
+public class NotesListFragment extends Fragment implements AdapterCallback {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
 
@@ -62,10 +63,17 @@ public class NotesListFragment extends Fragment implements AdapterCallback{
 
     @Override
     public void openNote(String title, String description) {
-        Log.d("", "click");
-        Boolean isHorizontal = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        boolean isHorizontal = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        if (isHorizontal) {
+            //getActivity().findViewById(R.id.container_notes_list).setVisibility(View.GONE);
+        } else {
+            getActivity().findViewById(R.id.container_notes_list).setVisibility(View.VISIBLE);
+        }
         int container = isHorizontal ? R.id.container_note : R.id.container_notes_list;
-        getActivity().getSupportFragmentManager()
+        fragmentManager
+                .popBackStack();
+        fragmentManager
                 .beginTransaction()
                 .replace(container, NoteFragment.newInstance(title, description))
                 .addToBackStack(null)

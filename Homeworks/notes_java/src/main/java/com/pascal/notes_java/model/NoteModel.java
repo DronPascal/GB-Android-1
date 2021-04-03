@@ -6,6 +6,12 @@ public class NoteModel {
     private String title;
     private String description;
 
+    public NoteModel(String title, String description, Date creationDate) {
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -31,12 +37,4 @@ public class NoteModel {
     }
 
     private Date creationDate;
-
-    public NoteModel(String title, String description, Date creationDate) {
-        this.title = title;
-        this.description = description;
-        this.creationDate = creationDate;
-    }
-
-
 }
