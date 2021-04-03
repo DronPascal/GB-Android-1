@@ -3,36 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="?attr/colorPrimary"
+    android:fitsSystemWindows="true"
     android:gravity="bottom"
     android:orientation="horizontal">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/img_min_size"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/default_margin"
         android:minWidth="@dimen/img_min_size"
-        android:src="@android:drawable/star_big_on"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:layout_gravity="center_vertical"/>
+        android:minHeight="@dimen/img_min_size"
+        android:src="@android:drawable/star_big_on" />
+
     <LinearLayout
-        android:layout_marginLeft="@dimen/default_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/default_margin"
+        android:orientation="vertical">
+
         <TextView
+            android:id="@+id/text_name"
+            style="?attr/textAppearanceHeadline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
-            style="?attr/textAppearanceHeadline5"/>
+            android:text="@string/text_name" />
+
         <TextView
+            android:id="@+id/text_surname"
+            style="?attr/textAppearanceHeadline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Surname"
-            style="?attr/textAppearanceHeadline5"/>
+            android:text="@string/text_surname" />
     </LinearLayout>
-
-
 
 
 </LinearLayout>

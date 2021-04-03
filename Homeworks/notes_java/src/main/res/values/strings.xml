@@ -5,4 +5,6 @@
     <string name="navigation_drawer_open">opened</string>
     <string name="settings">Settings</string>
     <string name="favorite">Favorite</string>
+    <string name="text_name">Name</string>
+    <string name="text_surname">Surname</string>
 </resources>
