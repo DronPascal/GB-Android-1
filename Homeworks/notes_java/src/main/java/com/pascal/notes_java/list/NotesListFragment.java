@@ -66,7 +66,7 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
         boolean isHorizontal = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
         if (isHorizontal) {
-            //getActivity().findViewById(R.id.container_notes_list).setVisibility(View.GONE);
+            getActivity().findViewById(R.id.container_notes_list).setVisibility(View.GONE);
         } else {
             getActivity().findViewById(R.id.container_notes_list).setVisibility(View.VISIBLE);
         }
