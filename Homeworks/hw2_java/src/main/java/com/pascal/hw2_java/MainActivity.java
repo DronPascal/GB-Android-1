@@ -7,7 +7,6 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView txtResult;
     private Calculator calculator;
-    private List<View> tableViewsList = new ArrayList<>();
+    private List<View> buttons = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtResult = findViewById(R.id.resultNumArea);
         setCurrentNumber(calculator.getCurrentNum());
 
-        tableViewsList = getAllChildren(findViewById(R.id.buttonsLayout));
-        for (View v : tableViewsList) {
+        buttons = findAllButtons();
+        for (View v : buttons) {
             if (v instanceof Button) {
                 v.setOnClickListener(this);
             }
@@ -153,21 +152,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtResult.setText(curNum);
     }
 
-    private List<View> getAllChildren(View v) {
-        List<View> visited = new ArrayList<>();
-        List<View> unvisited = new ArrayList<>();
-        unvisited.add(v);
-
-        while (!unvisited.isEmpty()) {
-            View child = unvisited.remove(0);
-            visited.add(child);
-            if (!(child instanceof ViewGroup)) continue;
-            ViewGroup group = (ViewGroup) child;
-            final int childCount = group.getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                unvisited.add(group.getChildAt(i));
-            }
-        }
-        return visited;
+    private List<View> findAllButtons() {
+        List<View> buttonsViews = new ArrayList<>();
+        buttonsViews.add(findViewById(R.id.btn0));
+        buttonsViews.add(findViewById(R.id.btn1));
+        buttonsViews.add(findViewById(R.id.btn2));
+        buttonsViews.add(findViewById(R.id.btn3));
+        buttonsViews.add(findViewById(R.id.btn4));
+        buttonsViews.add(findViewById(R.id.btn5));
+        buttonsViews.add(findViewById(R.id.btn6));
+        buttonsViews.add(findViewById(R.id.btn7));
+        buttonsViews.add(findViewById(R.id.btn8));
+        buttonsViews.add(findViewById(R.id.btn9));
+        buttonsViews.add(findViewById(R.id.btnClear));
+        buttonsViews.add(findViewById(R.id.btnDelete));
+        buttonsViews.add(findViewById(R.id.btnDiv));
+        buttonsViews.add(findViewById(R.id.btnDot));
+        buttonsViews.add(findViewById(R.id.btnEquals));
+        buttonsViews.add(findViewById(R.id.btnMinus));
+        buttonsViews.add(findViewById(R.id.btnPlus));
+        return buttonsViews;
     }
 }

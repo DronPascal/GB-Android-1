@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="false"
+        android:contentDescription="@string/back_img_description"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/img_background"
-        android:contentDescription="@string/back_img_description" />
+        app:srcCompat="@drawable/img_background" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/resultNumArea"
@@ -40,7 +40,7 @@
                 android:id="@+id/btnClear"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_c" />
+                android:text="@string/text_btn_c" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDelete"
@@ -52,13 +52,13 @@
                 android:id="@+id/dtnPow"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_pow" />
+                android:text="@string/text_btn_pow" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDiv"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_div" />
+                android:text="@string/text_btn_div" />
         </TableRow>
 
         <TableRow
@@ -70,25 +70,25 @@
                 android:id="@+id/btn1"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_1" />
+                android:text="@string/text_btn_1" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn2"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_2" />
+                android:text="@string/text_btn_2" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn3"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_3" />
+                android:text="@string/text_btn_3" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMult"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_multiply" />
+                android:text="@string/text_btn_multiply" />
         </TableRow>
 
         <TableRow
@@ -100,25 +100,25 @@
                 android:id="@+id/btn4"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_4" />
+                android:text="@string/text_btn_4" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn5"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_5" />
+                android:text="@string/text_btn_5" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn6"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_6" />
+                android:text="@string/text_btn_6" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinus"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_minus" />
+                android:text="@string/text_btn_minus" />
         </TableRow>
 
         <TableRow
@@ -130,25 +130,25 @@
                 android:id="@+id/btn7"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_7" />
+                android:text="@string/text_btn_7" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn8"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_8" />
+                android:text="@string/text_btn_8" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn9"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_9" />
+                android:text="@string/text_btn_9" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlus"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_plus" />
+                android:text="@string/text_btn_plus" />
         </TableRow>
 
         <TableRow
@@ -160,19 +160,19 @@
                 android:id="@+id/btn0"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_0" />
+                android:text="@string/text_btn_0" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDot"
                 style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:text="@string/_dot" />
+                android:text="@string/text_btn_dot" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEquals"
                 style="@style/OperationsCalculatorButton"
                 android:layout_weight="2"
-                android:text="@string/_equal" />
+                android:text="@string/text_btn_equal" />
         </TableRow>
 
     </TableLayout>
