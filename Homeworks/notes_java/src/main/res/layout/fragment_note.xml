@@ -12,14 +12,14 @@
         style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin" />
+        android:layout_margin="@dimen/default_margin" />
 
     <TextView
         android:id="@+id/text_note_description"
         style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
+        android:layout_margin="@dimen/default_margin"
         tools:text="лалалалалалала" />
 
 </LinearLayout>
