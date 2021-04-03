@@ -10,15 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="false"
+        android:contentDescription="@string/back_img_description"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/img_background" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/resultNumArea"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="viewEnd"
-        android:textColor="@color/operations_color"
+        android:textColor="@color/black"
         android:textSize="@dimen/calc_text_size"
         app:layout_constraintBottom_toTopOf="@+id/buttonsLayout"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -35,76 +36,29 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnClear"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="C"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_c" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDelete"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:icon="@android:drawable/ic_input_delete"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="@dimen/btn_text_size"
-                app:iconTint="@color/operations_color" />
+                app:icon="@android:drawable/ic_input_delete" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/dtnPow"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="^"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_pow" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDiv"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="/"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_div" />
         </TableRow>
 
         <TableRow
@@ -112,73 +66,29 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="1"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_1" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="2"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_2" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="3"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_3" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMult"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="*"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_multiply" />
         </TableRow>
 
         <TableRow
@@ -186,73 +96,29 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="4"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_4" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="5"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_5" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="6"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_6" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMinus"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="-"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_minus" />
         </TableRow>
 
         <TableRow
@@ -260,73 +126,29 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn7"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="7"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_7" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn8"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="8"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_8" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn9"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="9"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_9" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPlus"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="+"
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_plus" />
         </TableRow>
 
         <TableRow
@@ -334,57 +156,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn0"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="0"
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_0" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDot"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/DefaultCalculatorButton"
                 android:layout_weight="1"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="."
-                android:textColor="@color/num_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp" />
+                android:text="@string/text_btn_dot" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEquals"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                style="@style/OperationsCalculatorButton"
                 android:layout_weight="2"
-                android:backgroundTint="@color/btn_color"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:maxWidth="@dimen/btn_max_size"
-                android:maxHeight="@dimen/btn_max_size"
-                android:minHeight="@dimen/btn_min_size"
-                android:text="="
-                android:textColor="@color/operations_color"
-                android:textSize="@dimen/btn_text_size"
-                app:cornerRadius="0dp"
-                app:iconPadding="0dp"
-                app:iconTint="@color/operations_color" />
+                android:text="@string/text_btn_equal" />
         </TableRow>
+
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

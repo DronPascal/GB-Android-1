@@ -11,8 +11,7 @@
         android:theme="@style/Theme.Homeworks">
         <activity
             android:name="com.pascal.hw2_java.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.Homeworks.NoActionBar">
+            android:theme="@style/Theme.Homeworks">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
