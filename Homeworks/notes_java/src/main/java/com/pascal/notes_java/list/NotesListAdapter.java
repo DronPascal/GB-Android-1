@@ -34,11 +34,8 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final String title = notesList.get(position).getTitle();
         final String description = notesList.get(position).getDescription();
-        holder.textTitle.setText(title);
-        holder.textDescription.setText(description);
-        holder.textDate.setText(notesList.get(position).getCreationDate().toString());
-        holder.itemView.setOnClickListener(view ->
-                mCallback.openNote(title, description));
+        final String creationDay = notesList.get(position).getCreationDate().toString();
+        holder.bind(title, description, creationDay);
     }
 
     @Override
@@ -47,10 +44,10 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView textTitle;
-        public final TextView textDescription;
-        public final TextView textDate;
-        public NoteModel noteItem;
+        private final TextView textTitle;
+        private final TextView textDescription;
+        private final TextView textDate;
+        private NoteModel noteItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -60,9 +57,12 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
             textDate = view.findViewById(R.id.text_note_date);
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + textTitle.getText() + "'";
+        public void bind(String title, String description, String creationDay) {
+            textTitle.setText(title);
+            textDescription.setText(description);
+            textDate.setText(creationDay);
+            itemView.setOnClickListener(view ->
+                    mCallback.openNote(title, description));
         }
     }
 }

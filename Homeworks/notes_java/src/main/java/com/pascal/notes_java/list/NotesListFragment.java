@@ -19,7 +19,7 @@ import com.pascal.notes_java.model.DataSource;
 import com.pascal.notes_java.note.NoteFragment;
 
 
-public class NotesListFragment extends Fragment implements AdapterCallback{
+public class NotesListFragment extends Fragment implements AdapterCallback {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
 
