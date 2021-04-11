@@ -1,16 +1,15 @@
 package com.pascal.notes_java.list;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.pascal.notes_java.R;
 import com.pascal.notes_java.model.NoteModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.ViewHolder> {
