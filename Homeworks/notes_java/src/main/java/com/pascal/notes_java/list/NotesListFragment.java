@@ -19,7 +19,6 @@ import com.pascal.notes_java.note.NoteFragment;
 
 import java.util.Objects;
 
-
 public class NotesListFragment extends Fragment implements AdapterCallback {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
