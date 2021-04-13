@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.pascal.notes_java.R;
-import com.pascal.notes_java.note.NoteFragment;
 import com.pascal.notes_java.model.CardsSource;
 import com.pascal.notes_java.model.CardsSourceImpl;
+import com.pascal.notes_java.note.NoteFragment;
 
 import java.util.Objects;
 

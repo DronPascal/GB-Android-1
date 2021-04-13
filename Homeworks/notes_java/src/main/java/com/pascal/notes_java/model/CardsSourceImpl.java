@@ -1,7 +1,9 @@
 package com.pascal.notes_java.model;
 
 import android.content.res.Resources;
+
 import com.pascal.notes_java.R;
+
 import java.util.ArrayList;
 
 public class CardsSourceImpl implements CardsSource {
@@ -19,9 +21,8 @@ public class CardsSourceImpl implements CardsSource {
         final String[] dates = resources.getStringArray(R.array.date);
         final String[] ids = resources.getStringArray(R.array.id);
 
-        for (int i=0; i<titles.length; i++) {
-            dataSource.add(new
-                    CardData(
+        for (int i = 0; i < titles.length; i++) {
+            dataSource.add(new CardData(
                             titles[i],
                             descriptions[i],
                             dates[i],

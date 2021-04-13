@@ -8,12 +8,12 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pascal.notes_java.R;
-import com.pascal.notes_java.model.NoteModel;
 import com.pascal.notes_java.model.CardsSource;
+import com.pascal.notes_java.model.NoteModel;
 
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.ViewHolder> {
 
-    CardsSource dataSource;
+    private CardsSource dataSource;
     private final AdapterCallback mCallback;
 
     public NotesListAdapter(AdapterCallback callback, CardsSource data) {

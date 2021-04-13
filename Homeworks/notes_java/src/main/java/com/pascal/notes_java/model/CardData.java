@@ -1,6 +1,6 @@
 package com.pascal.notes_java.model;
 
-public class CardData{
+public class CardData {
     String title, description, date, id;
 
     public CardData(String title, String description, String date, String id) {
