@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getSupportFragmentManager().findFragmentById(R.id.container_notes_list) == null) {
+        if (getSupportFragmentManager().findFragmentById(R.id.container_main) == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container_notes_list, NotesListFragment.newInstance(1))
+                    .replace(R.id.container_main, NotesListFragment.newInstance(2))
                     .commit();
         }
         initView();

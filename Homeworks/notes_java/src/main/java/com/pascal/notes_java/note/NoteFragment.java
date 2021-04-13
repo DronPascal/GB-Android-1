@@ -16,9 +16,11 @@ import com.pascal.notes_java.R;
 public class NoteFragment extends Fragment {
     private static final String ARGUMENT_TITLE = "title";
     private static final String ARGUMENT_DESCRIPTION = "description";
+    private static final String ARGUMENT_ID = "id";
 
     private String mTitle;
     private String mDescription;
+    private String mId;
 
     private TextView mTextTitle;
     private TextView mTextDescription;
@@ -27,11 +29,12 @@ public class NoteFragment extends Fragment {
     }
 
 
-    public static NoteFragment newInstance(String title, String description) {
+    public static NoteFragment newInstance(String title, String description, String id) {
         NoteFragment fragment = new NoteFragment();
         Bundle args = new Bundle();
         args.putString(ARGUMENT_TITLE, title);
         args.putString(ARGUMENT_DESCRIPTION, description);
+        args.putString(ARGUMENT_ID, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,6 +45,7 @@ public class NoteFragment extends Fragment {
         if (getArguments() != null) {
             mTitle = getArguments().getString(ARGUMENT_TITLE);
             mDescription = getArguments().getString(ARGUMENT_DESCRIPTION);
+            mId = getArguments().getString(ARGUMENT_ID);
         }
     }
 

@@ -7,4 +7,5 @@
     <string name="favorite">Favorite</string>
     <string name="text_name">Name</string>
     <string name="text_surname">Surname</string>
+    <string name="save">Save</string>
 </resources>

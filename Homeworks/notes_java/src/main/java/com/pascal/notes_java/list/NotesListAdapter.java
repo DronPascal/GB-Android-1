@@ -9,17 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pascal.notes_java.R;
 import com.pascal.notes_java.model.NoteModel;
-
-import java.util.List;
+import com.pascal.notes_java.model.CardsSource;
 
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.ViewHolder> {
 
-    private final List<NoteModel> notesList;
+    CardsSource dataSource;
     private final AdapterCallback mCallback;
 
-    public NotesListAdapter(AdapterCallback callback, List<NoteModel> notes) {
+    public NotesListAdapter(AdapterCallback callback, CardsSource data) {
         mCallback = callback;
-        notesList = notes;
+        dataSource = data;
     }
 
     @Override
@@ -31,15 +30,16 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final String title = notesList.get(position).getTitle();
-        final String description = notesList.get(position).getDescription();
-        final String creationDay = notesList.get(position).getCreationDate().toString();
-        holder.bind(title, description, creationDay);
+        final String title = dataSource.getCardData(position).getTitle();
+        final String description = dataSource.getCardData(position).getDescription();
+        final String date = dataSource.getCardData(position).getDate();
+        final String id = dataSource.getCardData(position).getId();
+        holder.bind(title, description, date, id);
     }
 
     @Override
     public int getItemCount() {
-        return notesList.size();
+        return dataSource.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,12 +56,12 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
             textDate = view.findViewById(R.id.text_note_date);
         }
 
-        public void bind(String title, String description, String creationDay) {
+        public void bind(String title, String description, String date, String id) {
             textTitle.setText(title);
             textDescription.setText(description);
-            textDate.setText(creationDay);
+            textDate.setText(date);
             itemView.setOnClickListener(view ->
-                    mCallback.openNote(title, description));
+                    mCallback.openNote(title, description, id));
         }
     }
 }

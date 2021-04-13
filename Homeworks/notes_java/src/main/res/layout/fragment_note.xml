@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_purple"
-    android:orientation="vertical"
     tools:context=".note.NoteFragment">
 
-    <TextView
-        android:id="@+id/text_note_title"
-        style="@style/TextAppearance.AppCompat.Headline"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_note_description"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/default_margin"
-        tools:text="лалалалалалала" />
+        <EditText
+            android:id="@+id/text_note_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:padding="@dimen/default_margin"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            tools:text="Планы" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/text_note_description"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/transparent"
+            android:paddingStart="@dimen/default_margin"
+            android:paddingEnd="@dimen/default_margin"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            tools:text="Надо что-то сделать\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то\nИ еще что-то" />
+    </LinearLayout>
+</ScrollView>

@@ -1,7 +1,5 @@
 package com.pascal.notes_java.list;
 
-import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +7,15 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.pascal.notes_java.R;
-import com.pascal.notes_java.model.DataSource;
 import com.pascal.notes_java.note.NoteFragment;
+import com.pascal.notes_java.model.CardsSource;
+import com.pascal.notes_java.model.CardsSourceImpl;
 
 import java.util.Objects;
 
@@ -45,36 +45,34 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes_list, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new NotesListAdapter(this, DataSource.getNotesList()));
-        }
+        CardsSource data = new CardsSourceImpl(getResources()).init();
+        RecyclerView recyclerView = view.findViewById(R.id.notes_list);
+        initRecyclerView(recyclerView, data);
         return view;
     }
 
-    @Override
-    public void openNote(String title, String description) {
-        boolean isHorizontal = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
-        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-        if (isHorizontal) {
-            getActivity().findViewById(R.id.container_notes_list).setVisibility(View.GONE);
+    private void initRecyclerView(RecyclerView recyclerView, CardsSource data) {
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
-            getActivity().findViewById(R.id.container_notes_list).setVisibility(View.VISIBLE);
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
         }
-        int container = isHorizontal ? R.id.container_note : R.id.container_notes_list;
-        fragmentManager
-                .popBackStack();
+        recyclerView.setAdapter(new NotesListAdapter(this, data));
+
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        DividerItemDecoration itemDecoration2 = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
+        itemDecoration2.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        recyclerView.addItemDecoration(itemDecoration);
+        recyclerView.addItemDecoration(itemDecoration2);
+    }
+
+    @Override
+    public void openNote(String title, String description, String id) {
+        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
         fragmentManager
                 .beginTransaction()
-                .replace(container, NoteFragment.newInstance(title, description))
+                .replace(R.id.container_main, NoteFragment.newInstance(title, description, id))
                 .addToBackStack(null)
                 .commit();
     }
