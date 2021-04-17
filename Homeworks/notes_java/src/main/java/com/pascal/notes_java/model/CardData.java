@@ -3,7 +3,7 @@ package com.pascal.notes_java.model;
 public class CardData {
     String title, description, date, id;
 
-    public CardData(String title, String description, String date, String id) {
+    public CardData(String title, String description, String date) {
         this.title = title;
         this.description = description;
         this.date = date;

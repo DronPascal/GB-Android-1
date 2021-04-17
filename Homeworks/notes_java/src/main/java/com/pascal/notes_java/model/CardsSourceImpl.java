@@ -23,11 +23,12 @@ public class CardsSourceImpl implements CardsSource {
         final String[] ids = resources.getStringArray(R.array.id);
 
         for (int i = 0; i < titles.length; i++) {
-            dataSource.add(new CardData(
+            CardData cardData = new CardData(
                     titles[i],
                     descriptions[i],
-                    dates[i],
-                    ids[i]));
+                    dates[i]);
+            cardData.setId(ids[i]);
+            dataSource.add(cardData);
         }
 
         if (cardsSourceResponse != null)

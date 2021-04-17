@@ -1,7 +1,6 @@
 package com.pascal.notes_java.list;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +21,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.pascal.notes_java.R;
 import com.pascal.notes_java.model.CardData;
 import com.pascal.notes_java.model.CardsSource;
+import com.pascal.notes_java.model.CardsSourceFirebaseImpl;
 import com.pascal.notes_java.model.CardsSourceImpl;
 import com.pascal.notes_java.note.NoteFragment;
 
@@ -67,10 +67,14 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
 
     private void initView(View view) {
         recyclerView = view.findViewById(R.id.notes_list);
-        data = new CardsSourceImpl(getResources()).init();
-        Log.d("", "recreated");
+        initRecyclerView(recyclerView);
 
-        initRecyclerView(recyclerView, data);
+        data = new CardsSourceFirebaseImpl().init(cardsSource -> {
+            adapter.notifyDataSetChanged();
+        });
+        recyclerView.setAdapter(adapter);
+        adapter.setDataSource(data);
+
     }
 
     @Override
@@ -87,8 +91,8 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
                 CardData cardData = new CardData(
                         "",
                         "",
-                        format.format(new Date()),
-                        data.getNewCardId());
+                        format.format(new Date()));
+                cardData.setId(data.getNewCardId());
                 data.addCardData(cardData);
                 adapter.notifyItemInserted(0);
                 //openNote(cardData);
@@ -98,15 +102,14 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initRecyclerView(RecyclerView recyclerView, CardsSource data) {
+    private void initRecyclerView(RecyclerView recyclerView) {
         if (mColumnCount <= 1) {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
         }
 
-        adapter = new NotesListAdapter(this, data);
-        recyclerView.setAdapter(adapter);
+        adapter = new NotesListAdapter(this);
 
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
