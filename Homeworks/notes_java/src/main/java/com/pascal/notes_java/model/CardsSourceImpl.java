@@ -31,8 +31,8 @@ public class CardsSourceImpl implements CardsSource {
             dataSource.add(cardData);
         }
 
-        if (cardsSourceResponse != null)
-            cardsSourceResponse.initialized(this);
+//        if (cardsSourceResponse != null)
+//            cardsSourceResponse.initialized(this);
         return this;
     }
 

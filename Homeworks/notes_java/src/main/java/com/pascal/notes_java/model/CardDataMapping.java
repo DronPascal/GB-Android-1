@@ -1,19 +1,14 @@
 package com.pascal.notes_java.model;
 
-
-import com.google.firebase.Timestamp;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class CardDataMapping {
     public static class Fields {
-
         public final static String TITLE = "title";
         public final static String DESCRIPTION = "description";
         public final static String DATE = "date";
         public final static String ID = "id";
-
     }
 
     public static CardData toCarData(String id, Map<String, Object> doc) {
@@ -30,7 +25,6 @@ public class CardDataMapping {
         answer.put(Fields.TITLE, cardData.getTitle());
         answer.put(Fields.DESCRIPTION, cardData.getDescription());
         answer.put(Fields.DATE, cardData.getDate());
-        answer.put(Fields.ID, cardData.getId());
         return answer;
     }
 }

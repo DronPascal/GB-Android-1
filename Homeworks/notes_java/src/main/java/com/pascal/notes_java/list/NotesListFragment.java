@@ -59,6 +59,11 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes_list, container, false);
+//        data = new CardsSourceImpl(getResources()).init(cardsSource ->
+//                adapter.notifyDataSetChanged());
+        data = new CardsSourceFirebaseImpl().init(cardsSource -> {
+            adapter.notifyDataSetChanged();
+        });
         initView(view);
         setHasOptionsMenu(true);
 
@@ -68,13 +73,27 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
     private void initView(View view) {
         recyclerView = view.findViewById(R.id.notes_list);
         initRecyclerView(recyclerView);
+    }
 
-        data = new CardsSourceFirebaseImpl().init(cardsSource -> {
-            adapter.notifyDataSetChanged();
-        });
+    private void initRecyclerView(RecyclerView recyclerView) {
+        recyclerView.setHasFixedSize(true);
+
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        } else {
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
+        }
+
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
+        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        DividerItemDecoration itemDecoration2 = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
+        itemDecoration2.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        recyclerView.addItemDecoration(itemDecoration);
+        recyclerView.addItemDecoration(itemDecoration2);
+
+        adapter = new NotesListAdapter(this);
         recyclerView.setAdapter(adapter);
         adapter.setDataSource(data);
-
     }
 
     @Override
@@ -92,7 +111,6 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
                         "",
                         "",
                         format.format(new Date()));
-                cardData.setId(data.getNewCardId());
                 data.addCardData(cardData);
                 adapter.notifyItemInserted(0);
                 //openNote(cardData);
@@ -100,33 +118,6 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void initRecyclerView(RecyclerView recyclerView) {
-        if (mColumnCount <= 1) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        } else {
-            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
-        }
-
-        adapter = new NotesListAdapter(this);
-
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
-        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        DividerItemDecoration itemDecoration2 = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
-        itemDecoration2.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        recyclerView.addItemDecoration(itemDecoration);
-        recyclerView.addItemDecoration(itemDecoration2);
-    }
-
-    @Override
-    public void openNote(CardData cardData) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-        fragmentManager
-                .beginTransaction()
-                .add(R.id.container_main, NoteFragment.newInstance(cardData.getTitle(), cardData.getDescription(), cardData.getId()))
-                .addToBackStack(null)
-                .commit();
     }
 
     @Override
@@ -148,4 +139,13 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
         return super.onContextItemSelected(item);
     }
 
+    @Override
+    public void openNote(CardData cardData) {
+        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.container_main, NoteFragment.newInstance(cardData.getTitle(), cardData.getDescription(), cardData.getId()))
+                .addToBackStack(null)
+                .commit();
+    }
 }
