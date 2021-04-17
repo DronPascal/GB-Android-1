@@ -23,12 +23,10 @@ public class CardsSourceImpl implements CardsSource {
 
         for (int i = 0; i < titles.length; i++) {
             dataSource.add(new CardData(
-                            titles[i],
-                            descriptions[i],
-                            dates[i],
-                            ids[i]
-                    )
-            );
+                    titles[i],
+                    descriptions[i],
+                    dates[i],
+                    ids[i]));
         }
         return this;
     }
@@ -41,5 +39,30 @@ public class CardsSourceImpl implements CardsSource {
     @Override
     public int size() {
         return dataSource.size();
+    }
+
+    @Override
+    public void deleteCardData(int position) {
+        dataSource.remove(position);
+    }
+
+    @Override
+    public void updateCardData(int position, CardData cardData) {
+        dataSource.set(position, cardData);
+    }
+
+    @Override
+    public void addCardData(CardData cardData) {
+        dataSource.add(0, cardData);
+    }
+
+    @Override
+    public void clearCardData() {
+        dataSource.clear();
+    }
+
+    @Override
+    public String getNewCardId() {
+        return String.valueOf(size());
     }
 }

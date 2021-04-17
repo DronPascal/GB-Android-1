@@ -63,4 +63,10 @@ public class NoteFragment extends Fragment {
         mTextTitle.setText(mTitle);
         mTextDescription.setText(mDescription);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
 }

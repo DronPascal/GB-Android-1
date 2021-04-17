@@ -8,4 +8,6 @@
     <string name="text_name">Name</string>
     <string name="text_surname">Surname</string>
     <string name="save">Save</string>
+    <string name="add">Добавить</string>
+    <string name="delete">Удалить</string>
 </resources>
