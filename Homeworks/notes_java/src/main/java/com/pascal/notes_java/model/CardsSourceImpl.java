@@ -15,7 +15,8 @@ public class CardsSourceImpl implements CardsSource {
         dataSource = new ArrayList(3);
     }
 
-    public CardsSourceImpl init() {
+    @Override
+    public CardsSource init(CardsSourceResponse cardsSourceResponse) {
         final String[] titles = resources.getStringArray(R.array.title);
         final String[] descriptions = resources.getStringArray(R.array.description);
         final String[] dates = resources.getStringArray(R.array.date);
@@ -28,6 +29,9 @@ public class CardsSourceImpl implements CardsSource {
                     dates[i],
                     ids[i]));
         }
+
+        if (cardsSourceResponse != null)
+            cardsSourceResponse.initialized(this);
         return this;
     }
 
