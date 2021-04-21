@@ -29,7 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class NotesListFragment extends Fragment implements AdapterCallback {
+public class NotesListFragment extends Fragment implements noteOpenerCallback {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
 

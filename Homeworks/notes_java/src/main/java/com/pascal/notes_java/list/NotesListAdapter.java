@@ -15,10 +15,10 @@ import com.pascal.notes_java.model.CardsSource;
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.ViewHolder> {
 
     private CardsSource dataSource;
-    private final AdapterCallback mCallback;
     private int menuPosition;
+    private final noteOpenerCallback mCallback;
 
-    public NotesListAdapter(AdapterCallback callback) {
+    public NotesListAdapter(noteOpenerCallback callback) {
         mCallback = callback;
     }
 
@@ -40,7 +40,8 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.bind(dataSource.getCardData(position));
+        CardData cardData = dataSource.getCardData(position);
+        holder.bind(cardData);
     }
 
     @Override
