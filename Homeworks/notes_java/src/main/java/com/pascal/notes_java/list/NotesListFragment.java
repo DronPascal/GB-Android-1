@@ -1,7 +1,6 @@
 package com.pascal.notes_java.list;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -68,8 +67,6 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
     private void initView(View view) {
         recyclerView = view.findViewById(R.id.notes_list);
         data = new CardsSourceImpl(getResources()).init();
-        Log.d("", "recreated");
-
         initRecyclerView(recyclerView, data);
     }
 
