@@ -1,5 +1,7 @@
 package com.pascal.notes_java.list;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -22,7 +24,6 @@ import com.pascal.notes_java.R;
 import com.pascal.notes_java.model.CardData;
 import com.pascal.notes_java.model.CardsSource;
 import com.pascal.notes_java.model.CardsSourceFirebaseImpl;
-import com.pascal.notes_java.model.CardsSourceImpl;
 import com.pascal.notes_java.note.NoteFragment;
 
 import java.text.SimpleDateFormat;
@@ -127,14 +128,24 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
         inflater.inflate(R.menu.card_menu, menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int position = adapter.getMenuPosition();
-        switch (item.getItemId()) {
-            case R.id.action_delete:
-                data.deleteCardData(position);
-                adapter.notifyItemRemoved(position);
-                return true;
+        if (item.getItemId() == R.id.action_delete) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.dialog_delete_note)
+                    .setMessage(R.string.dialog_delete_note_message)
+                    .setPositiveButton("Delete", (dialog, which) -> {
+                        data.deleteCardData(position);
+                        adapter.notifyItemRemoved(position);
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> {
+                    })
+                    .setCancelable(true)
+                    .create()
+                    .show();
+            return true;
         }
         return super.onContextItemSelected(item);
     }
