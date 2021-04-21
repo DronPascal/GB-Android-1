@@ -8,15 +8,16 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pascal.notes_java.R;
+import com.pascal.notes_java.model.CardData;
 import com.pascal.notes_java.model.CardsSource;
 import com.pascal.notes_java.model.NoteModel;
 
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.ViewHolder> {
 
     private CardsSource dataSource;
-    private final AdapterCallback mCallback;
+    private final noteOpenerCallback mCallback;
 
-    public NotesListAdapter(AdapterCallback callback, CardsSource data) {
+    public NotesListAdapter(noteOpenerCallback callback, CardsSource data) {
         mCallback = callback;
         dataSource = data;
     }
@@ -30,10 +31,11 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final String title = dataSource.getCardData(position).getTitle();
-        final String description = dataSource.getCardData(position).getDescription();
-        final String date = dataSource.getCardData(position).getDate();
-        final String id = dataSource.getCardData(position).getId();
+        CardData cardData = dataSource.getCardData(position);
+        final String title = cardData.getTitle();
+        final String description = cardData.getDescription();
+        final String date = cardData.getDate();
+        final String id = cardData.getId();
         holder.bind(title, description, date, id);
     }
 

@@ -19,7 +19,7 @@ import com.pascal.notes_java.note.NoteFragment;
 
 import java.util.Objects;
 
-public class NotesListFragment extends Fragment implements AdapterCallback {
+public class NotesListFragment extends Fragment implements noteOpenerCallback {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
 
@@ -59,12 +59,12 @@ public class NotesListFragment extends Fragment implements AdapterCallback {
         }
         recyclerView.setAdapter(new NotesListAdapter(this, data));
 
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
-        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        DividerItemDecoration itemDecoration2 = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
-        itemDecoration2.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        recyclerView.addItemDecoration(itemDecoration);
-        recyclerView.addItemDecoration(itemDecoration2);
+        DividerItemDecoration itemDecorationHorizontal = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
+        itemDecorationHorizontal.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        DividerItemDecoration itemDecorationVertical = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
+        itemDecorationVertical.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        recyclerView.addItemDecoration(itemDecorationHorizontal);
+        recyclerView.addItemDecoration(itemDecorationVertical);
     }
 
     @Override

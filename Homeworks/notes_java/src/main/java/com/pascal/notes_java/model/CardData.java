@@ -1,7 +1,10 @@
 package com.pascal.notes_java.model;
 
 public class CardData {
-    String title, description, date, id;
+    private String title;
+    private String description;
+    private String date;
+    private String id;
 
     public CardData(String title, String description, String date, String id) {
         this.title = title;
