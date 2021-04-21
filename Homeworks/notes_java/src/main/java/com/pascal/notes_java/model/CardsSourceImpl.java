@@ -5,10 +5,11 @@ import android.content.res.Resources;
 import com.pascal.notes_java.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardsSourceImpl implements CardsSource {
     private final Resources resources;
-    private ArrayList<CardData> dataSource;
+    private List<CardData> dataSource;
 
     public CardsSourceImpl(Resources resources) {
         this.resources = resources;
