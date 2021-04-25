@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "950028073335",
+    "project_id": "training-notes-2a2e5",
+    "storage_bucket": "training-notes-2a2e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950028073335:android:5bbd2d08042daaac754972",
+        "android_client_info": {
+          "package_name": "com.pascal.notes_java"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950028073335-f1ff49hvg4u9nm7s97p8eus5k1ko1jhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWAZT83GTvsygR_MpJqXJHpUt7rCy4FiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950028073335-f1ff49hvg4u9nm7s97p8eus5k1ko1jhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
