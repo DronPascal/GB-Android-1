@@ -13,8 +13,9 @@ import java.util.Map;
 public class CardsSourceFirebaseImpl implements CardsSource {
     public static final String CARD_COLLECTION = "card";
     public static final String TAG = "CardsSourceFirebaseImpl";
-    private FirebaseFirestore store = FirebaseFirestore.getInstance();
-    private CollectionReference collection = store.collection(CARD_COLLECTION);
+
+    private final FirebaseFirestore store = FirebaseFirestore.getInstance();
+    private final CollectionReference collection = store.collection(CARD_COLLECTION);
     private List<CardData> cardsData = new ArrayList<>();
 
     @Override
@@ -35,7 +36,7 @@ public class CardsSourceFirebaseImpl implements CardsSource {
                         Log.d(TAG, "success " + cardsData.size() + " qnt");
                         cardsSourceResponse.initialized(CardsSourceFirebaseImpl.this);
                     } else {
-                        Log.d(TAG, "get failed with ", task.getException());
+                        Log.e(TAG, "get failed with ", task.getException());
                     }
                 });
         return this;
