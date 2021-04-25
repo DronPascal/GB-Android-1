@@ -46,7 +46,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
 
     @Override
     public int getItemCount() {
-        if (dataSource==null) return 0;
+        if (dataSource == null) return 0;
         return dataSource.size();
     }
 

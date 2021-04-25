@@ -84,12 +84,12 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
             recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
         }
 
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
-        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        DividerItemDecoration itemDecoration2 = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
-        itemDecoration2.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        recyclerView.addItemDecoration(itemDecoration);
-        recyclerView.addItemDecoration(itemDecoration2);
+        DividerItemDecoration itemDecorationVertical = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
+        itemDecorationVertical.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        DividerItemDecoration itemDecorationHorizontal = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
+        itemDecorationHorizontal.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        recyclerView.addItemDecoration(itemDecorationVertical);
+        recyclerView.addItemDecoration(itemDecorationHorizontal);
 
         adapter = new NotesListAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -141,7 +141,7 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
 
     @Override
     public void openNote(CardData cardData) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager
                 .beginTransaction()
                 .add(R.id.container_main, NoteFragment.newInstance(cardData.getTitle(), cardData.getDescription(), cardData.getId()))
