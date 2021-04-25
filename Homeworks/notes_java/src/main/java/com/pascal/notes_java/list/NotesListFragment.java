@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -141,6 +142,7 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
                         adapter.notifyItemRemoved(position);
                     })
                     .setNegativeButton("Cancel", (dialog, which) -> {
+                        Toast.makeText(requireContext(), "closed", Toast.LENGTH_SHORT).show();
                     })
                     .setCancelable(true)
                     .create()
