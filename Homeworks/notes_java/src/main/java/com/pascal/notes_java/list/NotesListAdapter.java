@@ -1,26 +1,34 @@
 package com.pascal.notes_java.list;
 
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.pascal.notes_java.R;
-import com.pascal.notes_java.model.NoteModel;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.pascal.notes_java.R;
+import com.pascal.notes_java.model.CardData;
+import com.pascal.notes_java.model.CardsSource;
 
 public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.ViewHolder> {
 
-    private final List<NoteModel> notesList;
-    private final AdapterCallback mCallback;
+    private CardsSource dataSource;
+    private int menuPosition;
+    private final noteOpenerCallback mCallback;
 
-    public NotesListAdapter(AdapterCallback callback, List<NoteModel> notes) {
+    public NotesListAdapter(noteOpenerCallback callback) {
         mCallback = callback;
-        notesList = notes;
+    }
+
+    public void setDataSource(CardsSource dataSource) {
+        this.dataSource = dataSource;
+        notifyDataSetChanged();
+    }
+
+    public int getMenuPosition() {
+        return menuPosition;
     }
 
     @Override
@@ -32,22 +40,20 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final String title = notesList.get(position).getTitle();
-        final String description = notesList.get(position).getDescription();
-        final String creationDay = notesList.get(position).getCreationDate().toString();
-        holder.bind(title, description, creationDay);
+        CardData cardData = dataSource.getCardData(position);
+        holder.bind(cardData);
     }
 
     @Override
     public int getItemCount() {
-        return notesList.size();
+        if (dataSource == null) return 0;
+        return dataSource.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textTitle;
         private final TextView textDescription;
         private final TextView textDate;
-        private NoteModel noteItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -55,14 +61,30 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
             textTitle = view.findViewById(R.id.text_note_title);
             textDescription = view.findViewById(R.id.text_note_description);
             textDate = view.findViewById(R.id.text_note_date);
+
+            itemView.setOnLongClickListener(v -> {
+                menuPosition = getLayoutPosition();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    itemView.showContextMenu(10, 10);
+                }
+                return false;
+            });
+
+            if (mCallback != null) {
+                itemView.setOnLongClickListener(v -> {
+                    menuPosition = getLayoutPosition();
+                    return false;
+                });
+                mCallback.registerForContextMenu(view);
+            }
         }
 
-        public void bind(String title, String description, String creationDay) {
-            textTitle.setText(title);
-            textDescription.setText(description);
-            textDate.setText(creationDay);
-            itemView.setOnClickListener(view ->
-                    mCallback.openNote(title, description));
+        public void bind(CardData cardData) {
+            textTitle.setText(cardData.getTitle());
+            textDescription.setText(cardData.getDescription());
+            textDate.setText(cardData.getDate());
+            itemView.setOnClickListener(v ->
+                    mCallback.openNote(cardData));
         }
     }
 }

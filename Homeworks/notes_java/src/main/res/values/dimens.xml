@@ -3,4 +3,5 @@
     <dimen name="default_margin">16dp</dimen>
     <dimen name="nav_header_height">112dp</dimen>
     <dimen name="img_min_size">40dp</dimen>
+    <dimen name="max_card_height">224dp</dimen>
 </resources>
