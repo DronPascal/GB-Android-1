@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pascal.notes_java.R;
@@ -19,9 +18,13 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
     private int menuPosition;
     private final noteOpenerCallback mCallback;
 
-    public NotesListAdapter(noteOpenerCallback callback, CardsSource data) {
+    public NotesListAdapter(noteOpenerCallback callback) {
         mCallback = callback;
-        dataSource = data;
+    }
+
+    public void setDataSource(CardsSource dataSource) {
+        this.dataSource = dataSource;
+        notifyDataSetChanged();
     }
 
     public int getMenuPosition() {
@@ -43,6 +46,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
 
     @Override
     public int getItemCount() {
+        if (dataSource == null) return 0;
         return dataSource.size();
     }
 
@@ -81,7 +85,6 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.View
             textDate.setText(cardData.getDate());
             itemView.setOnClickListener(v ->
                     mCallback.openNote(cardData));
-
         }
     }
 }

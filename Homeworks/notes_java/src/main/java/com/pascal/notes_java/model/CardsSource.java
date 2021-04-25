@@ -1,6 +1,8 @@
 package com.pascal.notes_java.model;
 
 public interface CardsSource {
+    CardsSource init(CardsSourceResponse cardsSourceResponse);
+
     CardData getCardData(int position);
 
     int size();

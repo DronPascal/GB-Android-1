@@ -1,5 +1,7 @@
 package com.pascal.notes_java.list;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +24,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.pascal.notes_java.R;
 import com.pascal.notes_java.model.CardData;
 import com.pascal.notes_java.model.CardsSource;
-import com.pascal.notes_java.model.CardsSourceImpl;
+import com.pascal.notes_java.model.CardsSourceFirebaseImpl;
 import com.pascal.notes_java.note.NoteFragment;
 
 import java.text.SimpleDateFormat;
@@ -58,6 +61,11 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes_list, container, false);
+//        data = new CardsSourceImpl(getResources()).init(cardsSource ->
+//                adapter.notifyDataSetChanged());
+        data = new CardsSourceFirebaseImpl().init(cardsSource -> {
+            adapter.notifyDataSetChanged();
+        });
         initView(view);
         setHasOptionsMenu(true);
 
@@ -66,8 +74,28 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
 
     private void initView(View view) {
         recyclerView = view.findViewById(R.id.notes_list);
-        data = new CardsSourceImpl(getResources()).init();
-        initRecyclerView(recyclerView, data);
+        initRecyclerView(recyclerView);
+    }
+
+    private void initRecyclerView(RecyclerView recyclerView) {
+        recyclerView.setHasFixedSize(true);
+
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        } else {
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
+        }
+
+        DividerItemDecoration itemDecorationVertical = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
+        itemDecorationVertical.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        DividerItemDecoration itemDecorationHorizontal = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
+        itemDecorationHorizontal.setDrawable(getResources().getDrawable(R.drawable.separator, null));
+        recyclerView.addItemDecoration(itemDecorationVertical);
+        recyclerView.addItemDecoration(itemDecorationHorizontal);
+
+        adapter = new NotesListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        adapter.setDataSource(data);
     }
 
     @Override
@@ -84,8 +112,7 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
                 CardData cardData = new CardData(
                         "",
                         "",
-                        format.format(new Date()),
-                        data.getNewCardId());
+                        format.format(new Date()));
                 data.addCardData(cardData);
                 adapter.notifyItemInserted(0);
                 //openNote(cardData);
@@ -95,34 +122,6 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initRecyclerView(RecyclerView recyclerView, CardsSource data) {
-        if (mColumnCount <= 1) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        } else {
-            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(mColumnCount, StaggeredGridLayoutManager.VERTICAL));
-        }
-
-        adapter = new NotesListAdapter(this, data);
-        recyclerView.setAdapter(adapter);
-
-        DividerItemDecoration itemDecorationHorizontal = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.VERTICAL);
-        itemDecorationHorizontal.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        DividerItemDecoration itemDecorationVertical = new DividerItemDecoration(getContext(), StaggeredGridLayoutManager.HORIZONTAL);
-        itemDecorationVertical.setDrawable(getResources().getDrawable(R.drawable.separator, null));
-        recyclerView.addItemDecoration(itemDecorationHorizontal);
-        recyclerView.addItemDecoration(itemDecorationVertical);
-    }
-
-    @Override
-    public void openNote(CardData cardData) {
-        FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
-        fragmentManager
-                .beginTransaction()
-                .add(R.id.container_main, NoteFragment.newInstance(cardData.getTitle(), cardData.getDescription(), cardData.getId()))
-                .addToBackStack(null)
-                .commit();
-    }
-
     @Override
     public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -130,16 +129,36 @@ public class NotesListFragment extends Fragment implements noteOpenerCallback {
         inflater.inflate(R.menu.card_menu, menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int position = adapter.getMenuPosition();
-        switch (item.getItemId()) {
-            case R.id.action_delete:
-                data.deleteCardData(position);
-                adapter.notifyItemRemoved(position);
-                return true;
+        if (item.getItemId() == R.id.action_delete) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.dialog_delete_note)
+                    .setMessage(R.string.dialog_delete_note_message)
+                    .setPositiveButton("Delete", (dialog, which) -> {
+                        data.deleteCardData(position);
+                        adapter.notifyItemRemoved(position);
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> {
+                        Toast.makeText(requireContext(), "closed", Toast.LENGTH_SHORT).show();
+                    })
+                    .setCancelable(true)
+                    .create()
+                    .show();
+            return true;
         }
         return super.onContextItemSelected(item);
     }
 
+    @Override
+    public void openNote(CardData cardData) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.container_main, NoteFragment.newInstance(cardData.getTitle(), cardData.getDescription(), cardData.getId()))
+                .addToBackStack(null)
+                .commit();
+    }
 }

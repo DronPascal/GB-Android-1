@@ -16,19 +16,24 @@ public class CardsSourceImpl implements CardsSource {
         dataSource = new ArrayList(3);
     }
 
-    public CardsSourceImpl init() {
+    @Override
+    public CardsSource init(CardsSourceResponse cardsSourceResponse) {
         final String[] titles = resources.getStringArray(R.array.title);
         final String[] descriptions = resources.getStringArray(R.array.description);
         final String[] dates = resources.getStringArray(R.array.date);
         final String[] ids = resources.getStringArray(R.array.id);
 
         for (int i = 0; i < titles.length; i++) {
-            dataSource.add(new CardData(
+            CardData cardData = new CardData(
                     titles[i],
                     descriptions[i],
-                    dates[i],
-                    ids[i]));
+                    dates[i]);
+            cardData.setId(ids[i]);
+            dataSource.add(cardData);
         }
+
+//        if (cardsSourceResponse != null)
+//            cardsSourceResponse.initialized(this);
         return this;
     }
 
