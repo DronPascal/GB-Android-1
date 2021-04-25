@@ -6,11 +6,10 @@ public class CardData {
     private String date;
     private String id;
 
-    public CardData(String title, String description, String date, String id) {
+    public CardData(String title, String description, String date) {
         this.title = title;
         this.description = description;
         this.date = date;
-        this.id = id;
     }
 
     public String getTitle() {
@@ -27,6 +26,10 @@ public class CardData {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 
