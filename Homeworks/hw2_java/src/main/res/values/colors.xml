@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey_500">#212121</color>
+    <color name="grey_700">#484848</color>
+    <color name="grey_200">#000000</color>
+    <color name="orange_500">#ff9100</color>
+    <color name="orange_700">#ffc246</color>
+    <color name="orange_200">#c56200</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <!-- My buttons colors-->
+    <color name="btn_color">#A6F49F36</color>
+    <color name="operations_color">#000000</color>
+    <color name="num_color">#BE171130</color>
+</resources>

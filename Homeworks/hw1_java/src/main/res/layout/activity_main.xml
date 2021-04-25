@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="188dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#FFEB3B"
+            android:gravity="center"
+            android:text="Этот"
+            android:textSize="36sp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#3F51B5"
+            android:ems="5"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:inputType="textPersonName"
+            android:rotationX="21"
+            android:rotationY="6"
+            android:text="Макет"
+            android:textSize="36sp" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="просто"
+            android:textSize="36sp" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|right"
+            android:hapticFeedbackEnabled="false"
+            android:text="ОГОНЬ"
+            android:textColor="#FA2111"
+            android:textSize="36sp" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#8BC34A"
+            android:buttonTint="#CF2828"
+            android:gravity="center"
+            android:textOff="да!"
+            android:textOn="да!" />
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <Button
+            android:id="@+id/fvd_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#009688"
+            android:checkable="false"
+            android:clickable="false"
+            android:text="ещё" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

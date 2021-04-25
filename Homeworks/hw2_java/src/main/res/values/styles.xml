@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DefaultCalculatorButton">
+        <item name="android:layout_width">@dimen/zeroDp</item>
+        <item name="android:layout_height">match_parent</item>
+       <!-- <item name="android:backgroundTint">@color/btn_color</item> -->
+        <item name="android:insetTop">@dimen/zeroDp</item>
+        <item name="android:insetBottom">@dimen/zeroDp</item>
+        <item name="android:maxWidth">@dimen/btn_max_size</item>
+        <item name="android:maxHeight">@dimen/btn_max_size</item>
+        <item name="android:minHeight">@dimen/btn_min_size</item>
+        <!--<item name="android:textColor">@color/num_color</item>-->
+        <item name="android:textSize">@dimen/btn_text_size</item>
+        <item name="cornerRadius">@dimen/zeroDp</item>
+        <item name="iconPadding">@dimen/zeroDp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconSize">@dimen/btn_text_size</item>
+        <!--<item name="iconTint">@color/num_color</item>-->
+    </style>
+
+    <style name="OperationsCalculatorButton" parent="DefaultCalculatorButton">
+        <!--<item name="android:textColor">@color/operations_color</item>-->
+        <!--<item name="iconTint">@color/operations_color</item>-->
+    </style>
+
+</resources>

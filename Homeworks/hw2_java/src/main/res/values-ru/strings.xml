@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="calc_cleared">Калькулятор очищен</string>
+    <string name="datk_theme_title">Темная тема</string>
+</resources>

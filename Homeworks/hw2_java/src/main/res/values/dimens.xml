@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btn_text_size">40sp</dimen>
+    <dimen name="btn_max_size">140dp</dimen>
+    <dimen name="btn_min_size">100dp</dimen>
+    <dimen name="calc_text_size">90sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="zeroDp">0dp</dimen>
+</resources>
